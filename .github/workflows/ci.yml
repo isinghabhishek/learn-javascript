@@ -19,15 +19,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
-      - name: Install ESLint
-        run: npm install --save-dev eslint@8
+      - name: Install dependencies
+        run: npm install
 
-      - name: Run ESLint on JS files
-        run: npx eslint "**/*.js" || true
-
-      - name: Install html-validate
-        run: npm install --save-dev html-validate
-
-      - name: Run HTML validation
-        run: npx html-validate "**/*.html" || true
+      - name: Run lint
+        run: npm run lint
